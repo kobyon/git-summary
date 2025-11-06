@@ -1,12 +1,15 @@
 #!/bin/sh
 
-Source="${HOME}/.local/src/upheads"
-Report="${HOME}/.local/src/git-report-$(date -d yesterday +%Y-%m-%d).txt"
+source="${HOME}/.local/src/upheads/puppet"
+report="./git-report-$(date -d yesterday +%Y-%m-%d).txt"
+committer_email="oliver.sakkestad@upheads.no"
+since="yesterday 00:00"
+until="yesterday 23:59"
 
-for d in ${Source} ; do
+for d in ${source} ; do
   if [ -d "$d/.git" ]; then
-    echo "=== $d ===" >> "${Report}"
-    (cd "$d" && git log --since="yesterday 00:00" --until="yesterday 23:59" --committer="oliver.sakkestad@upheads.no" --pretty=format:"%s" >> "${Report}")
-    echo >> "${Report}"
+    echo "=== $d ===" >> "${report}"
+    (cd "$d" && git log --since="${since}" --until="${until}" --committer="${committer_email}" --pretty=format:"%s" >> "${report}")
+    echo >> "${report}"
   fi
 done
