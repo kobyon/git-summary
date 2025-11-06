@@ -9,7 +9,7 @@ until="yesterday 23:59"
 for d in "${source}"/* ; do
   if [ -d "$d/.git" ]; then
     echo "=== $d ===" >> "${report}"
-    (cd "$d" && git log --since="${since}" --until="${until}" --committer="${committer_email}" --pretty=format:"%s" >> "${report}")
+    git --no-pager --git-dir="$d/.git" --work-tree="$d" log --since="${since}" --until="${until}" --author="${committer_email}" --pretty=format:"%s"
     echo >> "${report}"
   fi
 done
