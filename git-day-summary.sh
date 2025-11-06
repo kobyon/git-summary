@@ -6,7 +6,7 @@ committer_email="oliver.sakkestad@upheads.no"
 since="today 00:00"
 until="today 23:59"
 
-for d in "${source}"/* ; do
+find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
   if [ -d "${d}/.git" ]; then
     echo "=== ${d} ===" >> "${report}"
 
