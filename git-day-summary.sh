@@ -1,7 +1,7 @@
 #!/bin/sh
 
 source="${HOME}/.local/src/upheads/"
-report="./git-report-$(date -d yesterday +%Y-%m-%d).txt"
+report="./git-report-$(date -d today +%Y-%m-%d).txt"
 committer_email="oliver.sakkestad@upheads.no"
 since="today 00:00"
 until="today 23:59"
