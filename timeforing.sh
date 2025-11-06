@@ -1,7 +1,7 @@
 #!/bin/sh
 
-source="${HOME}/.local/src/upheads"
-report="${HOME}/.local/src/git-report-$(date -d yesterday +%Y-%m-%d).txt"
+source="${HOME}/.local/src/upheads/puppet"
+report="./git-report-$(date -d yesterday +%Y-%m-%d).txt"
 committer_email="oliver.sakkestad@upheads.no"
 since="yesterday 00:00"
 until="yesterday 23:59"
