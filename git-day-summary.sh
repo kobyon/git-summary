@@ -14,7 +14,7 @@ for d in "${source}"/* ; do
     --since="${since}" \
     --until="${until}" \
     --author="${committer_email}" \
-    --pretty=format:"%s"
+    --pretty=format:"%s" >> "${report}"
 
     echo >> "${report}"
   fi
