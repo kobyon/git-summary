@@ -4,6 +4,10 @@ source="${HOME}/.local/src/"
 committer_email="oliver.sakkestad@upheads.no"
 
 create_report() {
+  # Variable reference
+  # 1 - since
+  # 2 - until
+
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
     if [ -d "${d}/.git" ]; then
       printf "%s\n" "=== ${d} ==="
