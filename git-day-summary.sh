@@ -1,7 +1,7 @@
 #!/bin/sh
 
 source="${HOME}/.local/src/"
-committer_email="oliver.sakkestad@upheads.no"
+committer_emails="oliver.sakkestad@upheads.no 77970971+kobyon@users.noreply.github.com"
 
 create_report() {
   # Variable reference
@@ -11,11 +11,13 @@ create_report() {
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
     printf "%s\n" "=== ${d} ==="
 
-    git --no-pager --git-dir="${d}/.git" --work-tree="${d}" log --all \
-    --since="${1}" \
-    --until="${2}" \
-    --author="${committer_email}" \
-    --pretty=format:"%s"
+    printf '%s' "${committer_emails}" | awk '{ for( i=1; i<=NF; i++) print $i }' | while read -r email; do
+      git --no-pager --git-dir="${d}/.git" --work-tree="${d}" log --all \
+      --since="${1}" \
+      --until="${2}" \
+      --author="${email}" \
+      --pretty=format:"%s"
+    done
 
     printf "\n"
   done
