@@ -26,7 +26,8 @@ create_report() {
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
   _git_log=$(git_log "${1}" "${2}" "${d}")
     if [ -n "${_git_log}" ]; then
-      printf "=== %s ===\n" "${d#"${source}"}"
+      project=$(printf "%s" "${d#"${source}"}" | awk -F'/' '{print $2}')
+      printf "=== %s ===\n" "${project}"
       printf "%s\n" "${_git_log}"
     fi
   done
