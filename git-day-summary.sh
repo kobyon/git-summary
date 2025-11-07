@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source="${HOME}/.local/src/upheads/"
+source="${HOME}/.local/src/"
 report="./git-report-$(date -d today +%Y-%m-%d).txt"
 committer_email="oliver.sakkestad@upheads.no"
 since="today 00:00"
