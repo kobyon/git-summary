@@ -37,7 +37,7 @@ create_report() {
   done
 }
 
-mkdir -p "${report_folder}" # Make sure the project folder exist
+[ -d "${report_folder}" ] || mkdir -p "${report_folder}" # Make sure the project folder exist
 
 # Main loop
 # Looping trough all days you want to generate reports for
