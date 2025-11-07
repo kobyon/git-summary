@@ -25,8 +25,8 @@ create_report() {
 
 for i in $(seq 0 6); do
   day=$(date -d "$i days ago" +%Y-%m-%d)
-  since="$day 00:00"
-  until="$day 23:59"
+  since="$day 07:00"
+  until="$day 18:00"
   report="./git-report-$day.txt"
 
   create_report "${since}" "${until}" > "${report}"
