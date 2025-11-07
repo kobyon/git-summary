@@ -8,7 +8,7 @@ until="today 23:59"
 
 find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
   if [ -d "${d}/.git" ]; then
-    echo "=== ${d} ===" >> "${report}"
+    printf "%s\n" "=== ${d} ===" >> "${report}"
 
     git --no-pager --git-dir="${d}/.git" --work-tree="${d}" log \
     --since="${since}" \
@@ -16,6 +16,6 @@ find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
     --author="${committer_email}" \
     --pretty=format:"%s" >> "${report}"
 
-    echo >> "${report}"
+    printf "\n" >> "${report}"
   fi
 done
