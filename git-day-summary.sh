@@ -1,6 +1,7 @@
 #!/bin/sh
 
 source="${HOME}/.local/src/"
+report_folder="${HOME}/reports"
 committer_emails="oliver.sakkestad@upheads.no 77970971+kobyon@users.noreply.github.com"
 
 create_report() {
@@ -23,11 +24,13 @@ create_report() {
   done
 }
 
+mkdir -p "${report_folder}"
+
 for i in $(seq 0 6); do
   day=$(date -d "${i} days ago" +%Y-%m-%d)
   since="${day} 07:00"
   until="${day} 18:00"
-  report="./git-report-${day}.txt"
+  report="${report_folder}/git-report-${day}.txt"
 
   create_report "${since}" "${until}" > "${report}"
 done
