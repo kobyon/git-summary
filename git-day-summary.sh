@@ -3,6 +3,7 @@
 source="${HOME}/.local/src/"
 report_folder="${HOME}/reports"
 committer_emails="oliver.sakkestad@upheads.no 77970971+kobyon@users.noreply.github.com"
+generate_history=${1:-3}
 
 create_report() {
   # Variable reference
@@ -26,7 +27,7 @@ create_report() {
 
 mkdir -p "${report_folder}"
 
-for i in $(seq 0 6); do
+for i in $(seq 0 $((generate_history - 1))); do
   day=$(date -d "${i} days ago" +%Y-%m-%d)
   since="${day} 07:00"
   until="${day} 18:00"
