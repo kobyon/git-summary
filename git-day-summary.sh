@@ -9,17 +9,15 @@ create_report() {
   # 2 - until
 
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
-    if [ -d "${d}/.git" ]; then
-      printf "%s\n" "=== ${d} ==="
+    printf "%s\n" "=== ${d} ==="
 
-      git --no-pager --git-dir="${d}/.git" --work-tree="${d}" log --all \
-      --since="${1}" \
-      --until="${2}" \
-      --author="${committer_email}" \
-      --pretty=format:"%s"
+    git --no-pager --git-dir="${d}/.git" --work-tree="${d}" log --all \
+    --since="${1}" \
+    --until="${2}" \
+    --author="${committer_email}" \
+    --pretty=format:"%s"
 
-      printf "\n"
-    fi
+    printf "\n"
   done
 }
 
