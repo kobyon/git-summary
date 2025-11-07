@@ -24,8 +24,6 @@ create_report() {
       --author="${email}" \
       --pretty=format:"%ad %s" --date=format:'%H:%M'
     done
-
-    printf "\n"
   done
 }
 
