@@ -9,7 +9,7 @@ create_report() {
   # 2 - until
 
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
-    printf "%s\n" "=== ${d} ==="
+  printf "=== %s ===\n" "${d#"${source}"}"
 
     printf '%s' "${committer_emails}" | awk '{ for( i=1; i<=NF; i++) print $i }' | while read -r email; do
       git --no-pager --git-dir="${d}/.git" --work-tree="${d}" log --all \
