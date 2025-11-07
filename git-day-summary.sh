@@ -22,7 +22,7 @@ create_report() {
       --since="${1}" \
       --until="${2}" \
       --author="${email}" \
-      --pretty=format:"%s"
+      --pretty=format:"%ad %s" --date=format:'%H:%M'
     done
 
     printf "\n"
