@@ -21,7 +21,7 @@ for i in $(seq 0 6); do
         --pretty=format:"%s"
 
         printf "\n"
-      } >> "${report}"
+      } > "${report}"
     fi
   done
 done
