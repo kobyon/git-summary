@@ -7,7 +7,7 @@
 source="${HOME}/.local/src/"
 report_folder="${HOME}/reports"
 committer_emails="oliver.sakkestad@upheads.no 77970971+kobyon@users.noreply.github.com"
-generate_history=${1:-3} # How many days of history?
+generate_history=${1:-4} # How many days of history?
 
 git_log() {
   # Variable reference
