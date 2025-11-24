@@ -45,8 +45,8 @@ create_report() {
 # Looping trough all days you want to generate reports for
 for i in $(seq 0 $((generate_history - 1))); do
   day=$(date -d "${i} days ago" +%Y-%m-%d)
-  since="${day} 07:00"
-  until="${day} 18:00"
+  since="${day} 00:00"
+  until="${day} 23:59"
   report="${report_folder}/git-report-${day}.txt"
 
   create_report "${since}" "${until}" > "${report}"
