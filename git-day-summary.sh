@@ -12,14 +12,14 @@ committer_emails="oliver.sakkestad@upheads.no 77970971+kobyon@users.noreply.gith
 generate_history=${1:-4} # How many days of history?
 
 git_log() {
-  # Variable reference
-  # 1 - since
-  # 2 - until
-  # 3 - git directory
+  since="${1}"
+  until="${2}" 
+  git_directory="${3}"
+  
   printf '%s' "${committer_emails}" | awk '{ for( i=1; i<=NF; i++) print $i }' | while read -r email; do
-    git --no-pager --git-dir="${3}/.git" --work-tree="${3}" log --all \
-    --since="${1}" \
-    --until="${2}" \
+    git --no-pager --git-dir="${git_directory}/.git" --work-tree="${git_directory}" log --all \
+    --since="${since}" \
+    --until="${until}" \
     --author="${email}" \
     --pretty=format:"%ad %s" --date=format:'%H:%M'
   done
