@@ -13,7 +13,7 @@ generate_history=${1:-4} # How many days of history?
 
 git_log() {
   since="${1}"
-  until="${2}" 
+  until="${2}"
   git_directory="${3}"
   
   printf '%s' "${committer_emails}" | awk '{ for( i=1; i<=NF; i++) print $i }' | while read -r email; do
