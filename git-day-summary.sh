@@ -31,7 +31,7 @@ create_report() {
   # 2 - until
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
     _git_log=$(git_log "${1}" "${2}" "${d}") # Store the value of git_log in a variable so we can run checks
-    if ! "${_git_log}"; then
+    if [ -n "${_git_log}" ]; then
       project=$(printf "%s" "${d#"${source}"}" | awk -F'/' '{print $2}')
       printf "=== %s ===\n" "${project}" # Print a project header
       printf "%s\n" "${_git_log}"
