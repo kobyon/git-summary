@@ -26,11 +26,11 @@ git_log() {
 }
 
 create_report() {
-  # Variable reference
-  # 1 - since
-  # 2 - until
+  since="${1}"
+  until="${2}"
+
   find "${source}" -type d -name ".git" -exec dirname {} \+ | while read -r d; do
-    _git_log=$(git_log "${1}" "${2}" "${d}") # Store the value of git_log in a variable so we can run checks
+    _git_log=$(git_log "${since}" "${until}" "${d}") # Store the value of git_log in a variable so we can run checks
     if [ -n "${_git_log}" ]; then
       project=$(printf "%s" "${d#"${source}"}" | awk -F'/' '{print $2}')
       printf "=== %s ===\n" "${project}" # Print a project header
