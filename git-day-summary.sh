@@ -5,9 +5,7 @@
 # This will generate 10 days of history.
 
 source="${HOME}/.local/src/"
-report_folder=$(test -f "${XDG_CONFIG_HOME:-${HOME}/.config}/user-dirs.dirs" && \
-. "${XDG_CONFIG_HOME:-${HOME}/.config}/user-dirs.dirs" && \
-printf "%s" "${XDG_DOCUMENTS_DIR:-${HOME}}/reports")
+report_folder="${HOME}/reports"
 committer_emails="oliver.sakkestad@upheads.no 77970971+kobyon@users.noreply.github.com"
 generate_history=${1:-4} # How many days of history?
 
